@@ -1,0 +1,22 @@
+{
+  "instructors": [
+    {
+      "id": 1,
+      "avatar_url": "https://www.ema.com",
+      "name": "Theofanes Netto",
+      "birth": 1081728000000,
+      "gender": "M",
+      "services": "Natação",
+      "created_at": 1596139241007
+    },
+    {
+      "id": 2,
+      "avatar_url": "https://www.ema.com",
+      "name": "Theofanes Netto",
+      "birth": 1045008000000,
+      "gender": "M",
+      "services": "Malhação",
+      "created_at": 1596139260311
+    }
+  ]
+}
