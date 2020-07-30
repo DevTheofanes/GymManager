@@ -9,6 +9,7 @@
   margin: 0;
   padding: 0;
   border: none;
+  outline: none;
 }
 
 body {
@@ -138,4 +139,35 @@ header {
   margin-top: 8px;
   margin-left: 5px;
   color: #777;
+}
+
+/* === FORM === */
+
+form input {
+  width: 100%;
+
+  color: #555;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+form input[type="radio"] {
+  width: initial;
+  margin-right: 5px;
+  text-align: center;
+}
+
+form input::placeholder {
+  font-weight: normal;
+  font-size: 16px;
+}
+
+form button[type="submit"] {
+  padding: 8px 36px;
+  background-color: var(--primary-color);
+  width: 100%;
+  margin-top: 32px;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 4px;
 }

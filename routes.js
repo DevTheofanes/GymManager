@@ -14,8 +14,7 @@ routes.get("/instructors/create", function (req, res) {
 });
 
 routes.post("/instructors", function (req, res) {
-  // return res.render("instructors/index");
-  return true;
+  return res.send("Recebido");
 });
 
 routes.get("/members", function (req, res) {
