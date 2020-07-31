@@ -1,5 +1,35 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-    <h1>Members</h1>
+    <div class="card table">
+        <a class="new" href="/members/create">Novo</a>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Atendimento</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for instructor in instructors %}
+                    <tr>
+                        <td>
+                            <span id="avatar" style="background-image: url({{instructor.avatar_url}})"></span>
+                            {{instructor.name}}
+                        </td>
+                        <td>
+                            {% for service in instructor.services %}
+                                <span id="itemService">{{service}}</span>
+                            {% endfor %}
+
+                        </td>
+                        <td>
+                            <a href="/instructors/{{instructor.id}}">Ver</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock content %}

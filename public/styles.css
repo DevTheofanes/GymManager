@@ -188,7 +188,7 @@ button#buttonDelete {
 }
 
 /* ===INDEX.NJK=== */
-.table__instructors {
+.table {
   display: block;
   padding: 40px;
   box-sizing: border-box;
@@ -235,7 +235,8 @@ tr td:last-child {
   text-align: center;
 }
 
-tr td:last-child a {
+tr td:last-child a,
+.new {
   text-decoration: none;
   color: #fff;
   background-color: var(--primary-color);
@@ -249,4 +250,9 @@ table thead tr th {
   color: #777;
   text-transform: uppercase;
   font-size: 14px;
+}
+
+.new {
+  display: inline-block;
+  margin-bottom: 16px;
 }

@@ -1,6 +1,6 @@
 const fs = require("fs");
-const data = require("./data.json");
-const { age, date } = require("./utils");
+const data = require("../data.json");
+const { age, date } = require("../utils");
 
 exports.show = function (req, res) {
   const { id } = req.params;
@@ -16,7 +16,7 @@ exports.show = function (req, res) {
   const instructor = {
     ...foundInstructor,
     age: age(foundInstructor.birth),
-    services: foundInstructor.services.split(","),
+    services: foundInstructor.services.toString().split(","),
     created_at: new Intl.DateTimeFormat("pt-BR").format(
       foundInstructor.created_at
     ),
@@ -31,11 +31,15 @@ exports.index = function (req, res) {
   instructors.forEach(function (element, index, array) {
     instructors[index] = {
       ...element,
-      services: element.services.split(","),
+      services: element.services.toString().split(","),
     };
   });
 
   return res.render("instructors/index", { instructors: data.instructors });
+};
+
+exports.create = function (req, res) {
+  return res.render("instructors/create");
 };
 
 exports.post = function (req, res) {
