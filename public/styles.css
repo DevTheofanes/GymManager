@@ -128,7 +128,8 @@ header {
   text-transform: uppercase;
 }
 
-.item span {
+.item span,
+#itemService {
   padding: 8px 16px;
   background-color: var(--secondary-color);
   border-radius: 16px;
@@ -184,4 +185,68 @@ a.button {
 button#buttonDelete {
   margin-top: 8px;
   background-color: salmon;
+}
+
+/* ===INDEX.NJK=== */
+.table__instructors {
+  display: block;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+table {
+  border-spacing: 0;
+}
+
+table tr th {
+  text-align: left;
+}
+
+th,
+td {
+  padding: 16px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+table tr:last-child td {
+  border: none;
+}
+
+table tr td:first-child {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+}
+
+table tr td:first-child span#avatar {
+  width: 48px;
+  height: 48px;
+  background-position: center;
+  background-size: cover;
+
+  border-radius: 50%;
+  border: 2px solid white;
+
+  box-shadow: 3px 1px 6px -4px black;
+}
+
+table tr th:last-child,
+tr td:last-child {
+  text-align: center;
+}
+
+tr td:last-child a {
+  text-decoration: none;
+  color: #fff;
+  background-color: var(--primary-color);
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+table thead tr th {
+  color: #777;
+  text-transform: uppercase;
+  font-size: 14px;
 }
