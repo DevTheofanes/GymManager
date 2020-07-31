@@ -25,6 +25,11 @@ exports.show = function (req, res) {
   return res.render("instructors/show", { instructor });
 };
 
+exports.index = function (req, res) {
+  const instructors = data.instructors;
+  return res.render("instructors/index", { instructors: data.instructors });
+};
+
 exports.post = function (req, res) {
   const keys = Object.keys(req.body);
 
@@ -96,5 +101,21 @@ exports.put = function (req, res) {
   fs.writeFile("data.json", JSON.stringify(data, null, 2), function (err) {
     if (err) return res.send("Error Wrinting File");
     return res.redirect(`/instructors/${id}`);
+  });
+};
+
+exports.delete = function (req, res) {
+  const { id } = req.body;
+
+  const filteredInstructors = data.instructors.filter(function (instructor) {
+    return instructor.id != id;
+  });
+
+  data.instructors = filteredInstructors;
+
+  fs.writeFile("data.json", JSON.stringify(data, null, 2), function (err) {
+    if (err) return res.send("Write error File");
+
+    return res.redirect("/instructors");
   });
 };
