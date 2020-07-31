@@ -1,6 +1,6 @@
 const fs = require("fs");
 const data = require("./data.json");
-const { age } = require("./utils");
+const { age, date } = require("./utils");
 
 exports.show = function (req, res) {
   const { id } = req.params;
@@ -52,5 +52,49 @@ exports.post = function (req, res) {
     if (err) return res.send("Error writing file");
 
     return res.redirect("/instructors");
+  });
+};
+
+exports.update = function (req, res) {
+  const { id } = req.params;
+
+  const foundInstructor = data.instructors.find(function (instructor) {
+    return instructor.id == id;
+  });
+
+  if (!foundInstructor) {
+    return res.send("Instructor not found");
+  }
+
+  const instructor = {
+    ...foundInstructor,
+    birth: date(foundInstructor.birth),
+  };
+
+  return res.render("instructors/update", { instructor });
+};
+
+exports.put = function (req, res) {
+  const { id } = req.body;
+
+  const foundInstructor = data.instructors.find(function (instructor) {
+    return instructor.id == id;
+  });
+
+  if (!foundInstructor) {
+    return res.send("Instructor not found");
+  }
+
+  const instructor = {
+    ...foundInstructor,
+    ...req.body,
+    birth: Date.parse(req.body.birth),
+  };
+
+  data.instructors[id - 1] = instructor;
+
+  fs.writeFile("data.json", JSON.stringify(data, null, 2), function (err) {
+    if (err) return res.send("Error Wrinting File");
+    return res.redirect(`/instructors/${id}`);
   });
 };

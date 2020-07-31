@@ -3,10 +3,11 @@
 {% block content %}
     <div class="card">
         <section class="avatar"></section>
-        <form class="details" method="POST" action="/instructors">
-            <h3>Novo Instrutor</h3>
+        <form class="details" method="POST" action="/instructors?_method=PUT">
+            <h3>Editar Instrutor</h3>
             {%include "instructors/_fields.njk"%}
 
+            <input type="hidden" name="id" value="{{instructor.id}}">
         </form >
     </div>
 {% endblock content %}
