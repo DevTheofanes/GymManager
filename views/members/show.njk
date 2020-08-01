@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="card">
-        <section class="avatar" style="background-image: url({{instructor.avatar_url}})"></section>
+        <section class="avatar" style="background-image: url({{member.avatar_url}})"></section>
         <section class="details">
             <h3>Detalhes</h3>
             <div class="item">
@@ -37,7 +37,7 @@
                 <div>{{member.height}}</div>
             </div>
 
-            <a href="/instructors/{{instructor.id}}/edit" class="button">Editar</a>
+            <a href="/members/{{member.id}}/edit" class="button">Editar</a>
         </section>
     </div>
 {% endblock content %}

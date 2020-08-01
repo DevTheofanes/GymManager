@@ -1,26 +1,6 @@
 const fs = require("fs");
 const data = require("../data.json");
-const { age, date } = require("../utils");
-
-exports.show = function (req, res) {
-  const { id } = req.params;
-
-  const foundMember = data.members.find(function (member) {
-    return member.id == id;
-  });
-
-  if (!foundMember) {
-    return res.send("Member not found");
-  }
-
-  const member = {
-    ...foundMember,
-    age: age(foundMember.birth),
-    created_at: new Intl.DateTimeFormat("pt-BR").format(foundMember.created_at),
-  };
-
-  return res.render("members/show", { member });
-};
+const { date } = require("../utils");
 
 exports.index = function (req, res) {
   return res.render("members/index", { members: data.members });
@@ -62,6 +42,25 @@ exports.post = function (req, res) {
   });
 };
 
+exports.show = function (req, res) {
+  const { id } = req.params;
+
+  const foundMember = data.members.find(function (member) {
+    return member.id == id;
+  });
+
+  if (!foundMember) {
+    return res.send("Member not found");
+  }
+
+  const member = {
+    ...foundMember,
+    birth: date(foundMember.birth).birthDay,
+  };
+
+  return res.render("members/show", { member });
+};
+
 exports.update = function (req, res) {
   const { id } = req.params;
 
@@ -75,7 +74,7 @@ exports.update = function (req, res) {
 
   const member = {
     ...foundMember,
-    birth: date(foundMember.birth),
+    birth: date(foundMember.birth).iso,
   };
 
   return res.render("members/update", { member });
